@@ -3,14 +3,17 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: Constraint propagation is used to simplify the sudoku board by using an understanding that because two boxes in a unit share exactly two common values, no other boxes in the same unit can have those two values.  If we use this understanding as a constraint in our sudoku sovler, boards with 'naked twins' can be solved.
+A: The naked twins constraint specifies that if two boxes in a unit in sudoku share exactly two common values, no other boxes in the same unit can have those two values.  The two boxes that share exactly two common values are 'naked twins'.
+
+Constraint propagation is the principle of simplifying the number of possible solutions for a given problem, by applying a 'constraint' to a set of nodes in a problem and ensuring logical consistency between these nodes. To apply the naked twins constraint to a given unit in sudoku, we iterate over all the boxes in the unit other than the naked twin boxes, and remove from the possible values for a unit the value of the naked twin(s) in that unit.  The removal of a possible value of a box is what we refer to as 'propagation' of a constraint, which helps us to reduce the number of solutions hence simplifying the problem.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
 A: By considering each diagonal as a distinct unit, it is possible to ensure that no
-value repeats in a diagonal, so that simplifies the number of possible values a given
+value repeats in a diagonal, which simplifies the number of possible values a given
 box can have.   Constraint propagation in this case ensures a sudoku board that has
-no repeats along the diagonal, so diagonal sudoku boards can be solved.
+no repeats along the diagonal and only boards with no repeats along the diagonal will be produced
+by agents that use this constraint.
 
 ### Install
 
